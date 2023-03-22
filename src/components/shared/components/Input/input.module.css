@@ -1,0 +1,15 @@
+.group {
+  width: 100%;
+  display: grid;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4f4a4a;
+}
+
+.input {
+  padding: 4px 8px;
+  font-size: 16px;
+}

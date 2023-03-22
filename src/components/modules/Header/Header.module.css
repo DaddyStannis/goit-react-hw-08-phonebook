@@ -1,0 +1,20 @@
+.header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.auth {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+}
+
+.authLink {
+  text-decoration: dotted;
+  cursor: pointer;
+  color: black
+}
+
+.authLink:global(.active) {
+  font-weight: 700;
+}

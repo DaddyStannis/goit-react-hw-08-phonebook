@@ -2,9 +2,8 @@ import PropTypes from 'prop-types';
 import styles from './contact-form.module.css';
 import NumberField from './NumberField/NumberField';
 import NameField from './NameField/NameField';
-import Button from 'components/shared/components/Button/Button';
-import { useState, useCallback } from 'react';
-import useForm from 'components/shared/hooks/useForm';
+import Button from 'shared/components/Button/Button';
+import useForm from 'shared/hooks/useForm';
 import initialState from './initial-state';
 
 const ContactForm = ({ onSubmit }) => {

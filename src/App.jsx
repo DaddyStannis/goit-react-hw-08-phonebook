@@ -6,8 +6,8 @@ import { selectIsRefreshing } from 'redux/auth/auth-selectors';
 import { useSelector } from 'react-redux';
 import RestrictedRoute from './RestrictedRoute';
 import { refresh } from 'redux/auth/auth-operations';
-import Layout from './Layout/Layout';
-import PrivateRoute from './PrivateRoute';
+import Layout from 'modules/Layout/Layout';
+import PrivateRoute from 'PrivateRoute';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));

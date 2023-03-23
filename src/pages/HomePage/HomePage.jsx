@@ -1,7 +1,7 @@
-import Section from 'components/shared/components/Section/Section';
-import ContactForm from 'components/modules/ContactForm/ContactForm';
-import ContactList from 'components/modules/ContactList/ContactList';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import Section from 'shared/components/Section/Section';
+import ContactForm from 'modules/ContactForm/ContactForm';
+import ContactList from 'modules/ContactList/ContactList';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectContacts,
@@ -13,7 +13,7 @@ import {
   removeContact,
   addContact,
 } from 'redux/contacts/contacts-operations';
-import ErrorField from 'components/shared/components/ErrorField/ErrorField';
+import ErrorField from 'shared/components/ErrorField/ErrorField';
 
 function isDublicate(name, contacts) {
   const normalizedName = name.toLowerCase();
@@ -36,38 +36,28 @@ const HomePage = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const getFilteredContacts = useCallback(() => {
+  const getFilteredContacts = () => {
     if (!filter.length) {
       return contacts;
     } else {
       return contacts.filter(({ name }) => name.toLowerCase().includes(filter));
     }
-  }, [contacts, filter]);
+  };
 
-  const handleSubmit = useCallback(
-    ({ name, number }) => {
-      if (isDublicate(name, contacts)) {
-        alert('This contact already exist');
-        return;
-      }
-      dispatch(addContact({ name, number }));
-    },
-    [contacts]
-  );
+  const handleSubmit = ({ name, number }) => {
+    if (isDublicate(name, contacts)) {
+      alert('This contact already exist');
+      return;
+    }
+    dispatch(addContact({ name, number }));
+  };
+  const handleDelete = id => {
+    dispatch(removeContact(id));
+  };
 
-  const handleDelete = useCallback(
-    id => {
-      dispatch(removeContact(id));
-    },
-    [contacts]
-  );
-
-  const handleFilter = useCallback(
-    str => {
-      setFilter(str.toLowerCase());
-    },
-    [filter]
-  );
+  const handleFilter = str => {
+    setFilter(str.toLowerCase());
+  };
 
   const filteredContacts = useMemo(
     () => getFilteredContacts(),

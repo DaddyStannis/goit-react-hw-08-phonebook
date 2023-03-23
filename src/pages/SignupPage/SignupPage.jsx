@@ -1,28 +1,28 @@
-import styles from './login-page.module.css';
-import LoginForm from 'components/LoginForm/LoginForm';
-import ErrorField from 'components/shared/components/ErrorField/ErrorField';
 import { useDispatch, useSelector } from 'react-redux';
+import { signup } from 'redux/auth/auth-operations';
 import { selectAuthError } from 'redux/auth/auth-selectors';
-import { login } from 'redux/auth/auth-operations';
+import SignupForm from 'modules/SIgnupForm/SignupForm';
+import ErrorField from 'shared/components/ErrorField/ErrorField';
 
-const LoginPage = () => {
+const SignupPage = () => {
   const dispatch = useDispatch();
 
   const error = useSelector(selectAuthError);
 
   function handleSignup(data) {
+    const name = `${data['first-name']} ${data['last-name']}`;
     const { email, password } = data;
-    dispatch(login({ email, password }));
+    dispatch(signup({ name, email, password }));
   }
 
   return (
     <div className="container">
       <div>
-        <LoginForm onSubmit={handleSignup} />
+        <SignupForm onSubmit={handleSignup} />
         {error && <ErrorField>{error}</ErrorField>}
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default SignupPage;

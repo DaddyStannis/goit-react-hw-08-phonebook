@@ -3,8 +3,8 @@ import {
   requestContacts,
   deleteContact,
   createContact,
-} from 'components/shared/api/contacts-api';
-import { addToStorage, removeFromStorage } from './contacts-slice';
+} from 'shared/api/contacts-api';
+// import { addToStorage, removeFromStorage } from './contacts-slice';
 
 const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
@@ -26,10 +26,10 @@ const removeContact = createAsyncThunk(
     try {
       const token = thunkAPI.getState().auth.token;
       const data = await deleteContact(id, token);
-
-      if (data.id === id) {
-        thunkAPI.dispatch(removeFromStorage({ id }));
-      }
+      return data;
+      // if (data.id === id) {
+      //   thunkAPI.dispatch(removeFromStorage({ id }));
+      // }
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -43,7 +43,8 @@ const addContact = createAsyncThunk(
     try {
       const token = thunkAPI.getState().auth.token;
       const data = await createContact(name, number, token);
-      thunkAPI.dispatch(addToStorage(data));
+      return data;
+      // thunkAPI.dispatch(addToStorage(data));
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

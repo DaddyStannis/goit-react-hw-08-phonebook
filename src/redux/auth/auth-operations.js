@@ -4,7 +4,7 @@ import {
   requestLogin,
   requestLogout,
   requestRefresh,
-} from 'components/shared/api/auth-api';
+} from 'shared/api/auth-api';
 
 const signup = createAsyncThunk(
   'auth/signup',

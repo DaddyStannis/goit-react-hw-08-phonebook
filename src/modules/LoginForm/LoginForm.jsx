@@ -1,7 +1,7 @@
 import styles from './LoginForm.module.css';
-import Input from 'components/shared/components/Input/Input';
-import Button from 'components/shared/components/Button/Button';
-import useForm from 'components/shared/hooks/useForm';
+import Input from 'shared/components/Input/Input';
+import Button from 'shared/components/Button/Button';
+import useForm from 'shared/hooks/useForm';
 import initialState from './initialState';
 
 const LoginForm = ({ onSubmit }) => {
